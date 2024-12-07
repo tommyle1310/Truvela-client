@@ -1,101 +1,108 @@
-import Image from "next/image";
+'use client'
+import { MainPoster } from "@/components/home/mainPoster";
+import MembershipItem from "@/components/home/MembershipItem";
+import TopServices from "@/components/home/topServices";
+import { Button } from "@/components/ui/button";
+import { memberships, topServices } from "@/data/home";
+import { faCartShopping, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const navbarRef = useRef<HTMLDivElement | null>(null); // Create a ref for the navbar
+  const [navbarHeight, setNavbarHeight] = useState<number>(0); // State to store the navbar height
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const updateNavbarHeight = () => {
+      if (navbarRef.current) {
+        setNavbarHeight(navbarRef.current.clientHeight); // Set the height in state
+      }
+    };
+
+    // Set the initial height when the component mounts
+    updateNavbarHeight();
+
+    // Listen for window resizing events and update the navbar height
+    window.addEventListener("resize", updateNavbarHeight);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", updateNavbarHeight);
+    };
+  }, []); // Empty dependency array ensures this runs only once when the component mounts
+
+  return (
+    <div className="flex flex-col gap-4">
+      {/* nav */}
+      <div
+        className="fixed navbar w-full p-4 bg-white shadow-sm shadow-green-800 z-10"
+        ref={navbarRef}
+      >
+        <div className="mx-auto max-w-screen-md flex justify-between gap-4 items-center">
+          <div className="">logo</div>
+          <div className="flex gap-4 items-center">
+            <div className="">Home</div>
+            <div className="">Products</div>
+            <div className="">Spa Services</div>
+            <div className="">Book Appointment</div>
+            <div className="">Blogs</div>
+            <div className="">About Us</div>
+            <div className="">Contact Us</div>
+          </div>
+          <div className="flex gap-4 items-center">
+            <FontAwesomeIcon icon={faSearch} />
+            <FontAwesomeIcon icon={faCartShopping} />
+            <FontAwesomeIcon icon={faUser} />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* Main content */}
+      <div
+        className="mx-auto max-w-screen-md flex flex-col gap-4 w-full py-4"
+        style={{ marginTop: `${navbarHeight}px` }} // Set the margin-top dynamically based on navbarHeight
+      >
+        <MainPoster />
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col text-violet-700 font-semibold items-center">
+            <h5 className="text-lg">We take for you</h5>
+            <h3 className="text-xl">Best Services</h3>
+          </div>
+          <div className="grid grid-cols-3 gap-4 w-full mx-auto">
+            {topServices.map(item => (
+              <TopServices service={item} />
+            ))}
+            <button className="bg-gradient-to-r col-span-3 mx-auto from-blue-500 to-purple-600 rounded-md px-4 py-2 text-white font-bold hover:duration-200  hover:from-violet-600 hover:to-blue-500 ">LEARN MORE</button>
+          </div>
+          <div className="w-full  aspect-[10/3] flex relative">
+            <div className="w-1/3 flex flex-col gap-3 p-2">
+              <h5 className="text-violet-600 text-lg font-bold">Sweet & Healthy Products</h5>
+              <h2 className="text-violet-600 text-xl font-bold">Wellness Therapy</h2>
+              <p className="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis iusto tenetur culpa? Aut quasi reprehenderit atque eveniet repellat, qui laudantium. Dolores quidem facere qui minus tempore iure tempora quos atque!</p>
+              <Button className="bg-gradient-to-tr from-violet-400 to-teal-400 mx-auto">Read More</Button>
+            </div>
+            <div className="w-2/3 h-full bg-center relative bg-contain bg-no-repeat" style={{ background: `url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHNwYXxlbnwwfHwwfHx8MA%3D%3D')`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+              <div className="bg-gradient-to-r from-white w-full h-full absolute"></div>
+            </div>
+          </div>
+          <div className="w-full  aspect-[10/4] flex relative ">
+            <div className="w-full h-full bg-center relative bg-contain bg-no-repeat flex flex-col gap-3" style={{ background: `url('https://images.unsplash.com/photo-1521052313888-1181c2f5f406?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZGFyayUyMHNwYXxlbnwwfHwwfHx8MA%3D%3D')`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+              <div className="absolute bg-white bg-opacity-0 w-full h-full"></div>
+              <div className="text-violet-400 bg-black bg-opacity-80 font-bold text-center">
+                <h5>where nature meet bliss</h5>
+                <h3>Get Membership</h3>
+              </div>
+              <div className="grid grid-cols-3 gap-3 p-4">
+                {memberships.map(item => (
+                  <MembershipItem membershipItem={item} />
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
     </div>
   );
 }
