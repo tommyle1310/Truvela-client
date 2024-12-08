@@ -8,6 +8,7 @@ import { AspectRatio } from "../ui/aspect-ratio"
 import { Button } from "../ui/button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
+import { imgMainPoster } from "@/data/imgLinks"
 
 export function MainPoster() {
     return (
@@ -41,16 +42,16 @@ export function MainPoster() {
             </ResizablePanel>
             <ResizableHandle />
             <ResizablePanel defaultSize={60} >
-                <div className="w-full h-full bg-center bg-contain bg-no-repeat" style={{ background: `url('https://github.com/shadcn.png')`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
-                    <div className="w-full h-full bg-black bg-opacity-40"></div>
+                <div className="w-full h-full bg-center bg-contain bg-no-repeat" style={{ backgroundImage: `url(${imgMainPoster})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+                    <div className="w-full h-full bg-black bg-opacity-20"></div>
                 </div>
             </ResizablePanel>
 
 
 
-            <div className="absolute bottom-32 right-80 ">
+            <div className="absolute bottom-28 right-96 ">
 
-                <div className="gap-4 p-2 w-64  flex flex-col bg-gradient-to-r from-blue-700 to-purple-600 absolute text-white rounded-md shadow-lg shadow-teal-900">
+                <div className="gap-4 p-2 w-64  flex flex-col bg-gradient-to-r from-blue-700 to-purple-600 absolute text-white rounded-md shadow-lg ">
                     <div className="p-2 rounded-lg justify-between bg-white flex items-center  text-purple-600 text-[8px] ">
                         <span className="font-bold">Grand Opening</span>
                         <span>All items are 25% for New Member!</span>

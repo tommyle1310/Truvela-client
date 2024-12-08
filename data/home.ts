@@ -1,22 +1,24 @@
+import { imgAromatherapy, imgFacialService, imgSwedishService } from "./imgLinks";
+
 export const topServices = [
     {
         id: 1,
         name: 'Hot stone massage',
-        img: 'https://github.com/shadcn.png',
+        img: imgFacialService,
         categoryImg: 'https://github.com/shadcn.png',
         description: 'Stone Massage are the most popular spa treatment'
     },
     {
         id: 2,
         name: 'Aromatherapy Massage',
-        img: 'https://github.com/shadcn.png',
+        img: imgAromatherapy,
         categoryImg: 'https://github.com/shadcn.png',
         description: 'A soothing massage using essential oils to promote relaxation and well-being.'
     },
     {
         id: 3,
         name: 'Swedish Massage',
-        img: 'https://github.com/shadcn.png',
+        img: imgSwedishService,
         categoryImg: 'https://github.com/shadcn.png',
         description: 'A gentle and relaxing massage that uses long strokes and kneading techniques.'
     },

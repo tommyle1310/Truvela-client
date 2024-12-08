@@ -13,7 +13,7 @@ const MembershipItem = ({ membershipItem }: { membershipItem: membership }) => {
     const gradientTo = `to-${theme}-500`;
 
     return (
-        <div className={`p-2 rounded-sm flex items-center flex-col bg-white gap-3 ${borderColor} border-[0.2rem]`}>
+        <div onClick={() => console.log('asdoauc')} className={`p-2 rounded-sm flex items-center flex-col bg-white gap-3 ${borderColor} border-[0.2rem]`}>
             <h3 className={`${textColor} font-bold text-xl`}>${membershipItem.price}</h3>
             <h5 className="text-sm">{membershipItem.expireType}</h5>
             <div className={`mx-auto w-4/12 h-1 rounded-sm ${borderColor}`}></div>
@@ -30,7 +30,7 @@ const MembershipItem = ({ membershipItem }: { membershipItem: membership }) => {
             <div className={`w-8/12 border border-dashed ${borderColor}`}></div>
             <p>{membershipItem.additionalPrivileges[1]}</p>
             <p className="text-xs font-extralight">*{membershipItem.condition}</p>
-            <Button className={`bg-gradient-to-r ${gradientFrom} ${gradientTo}`}>
+            <Button className={`cursor-pointer bg-gradient-to-r ${gradientFrom} ${gradientTo}`}>
                 Purchase
             </Button>
         </div>
