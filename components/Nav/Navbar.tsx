@@ -1,5 +1,6 @@
 import { faCartShopping, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 import React from 'react';
 
 // Define the props interface
@@ -15,15 +16,15 @@ const Navbar: React.FC<NavbarProps> = ({ navbarRef }) => {
             ref={navbarRef} // Use the passed ref here
         >
             <div className="mx-auto max-w-screen-md flex justify-between gap-4 items-center">
-                <div className="">logo</div>
+                <Link href='/' className="">logo</Link>
                 <div className="flex gap-4 items-center">
-                    <div className="">Home</div>
-                    <div className="">Products</div>
-                    <div className="">Spa Services</div>
-                    <div className="">Book Appointment</div>
-                    <div className="">Blogs</div>
-                    <div className="">About Us</div>
-                    <div className="">Contact Us</div>
+                    <Link href='/' className="">Home</Link>
+                    <Link href='/products' className="">Products</Link>
+                    <Link href='/spa-services' className="">Spa Services</Link>
+                    <Link href='/book-appointment' className="">Book Appointment</Link>
+                    <Link href='/blogs' className="">Blogs</Link>
+                    <Link href='/about-us' className="">About Us</Link>
+                    <Link href='/contact-us' className="">Contact Us</Link>
                 </div>
                 <div className="flex gap-4 items-center">
                     <FontAwesomeIcon icon={faSearch} />
