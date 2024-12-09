@@ -68,7 +68,6 @@ export const NavbarItem: TypeNavbarItem =
 
 export const RenderNavBarItem = (type: 'left' | 'center' | 'right') => {
     const currentRoute = usePathname();
-    console.log(currentRoute);
     return NavbarItem[type] && NavbarItem[type].map((item, index) => (
         item.href
             ? <Link key={index} href={item.href} className={`hover:duration-200 hover:text-violet-600 ${currentRoute === item.href && type !== 'left' && 'text-violet-600  px-2 py-1 bg-violet-50 rounded-md  font-semibold'}`}>{item.title}</Link> :
