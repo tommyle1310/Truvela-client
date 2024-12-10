@@ -5,7 +5,19 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { imgBooking, imgShortInfo } from '@/data/imgLinks'
-import React from 'react'
+import React, { useState } from 'react'
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+import { Textarea } from '@/components/ui/textarea'
+import { format } from 'date-fns'
+import { Button } from '@/components/ui/button'
 
 const hoursOfOperation = [
     {
@@ -45,8 +57,11 @@ const hoursOfOperation = [
     },
 ]
 
+
+
 const page = () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date())
+    const [selectedDate, setSelectedDate] = useState<number>(Math.floor(new Date().getTime() / 1000));
+
 
 
     return (
@@ -62,26 +77,44 @@ const page = () => {
                 <div className="flex gap-4">
                     <div className="w-7/12 grid grid-cols-2 gap-4">
                         <div className="w-full items-center">
-                            {/* <label htmlFor="email">Email</label> */}
-                            <Input type="email" id="email" placeholder="Email" />
+                            <label htmlFor="first-name">First name</label>
+                            <Input type="first-name" id="first-name" placeholder="First name" />
                         </div>
                         <div className="w-full items-center">
-                            {/* <label htmlFor="email">Last name</label> */}
+                            <label htmlFor="email">Last name</label>
                             <Input type="email" id="email" placeholder="Last name" />
                         </div>
                         <div className="w-full items-center">
-                            {/* <label htmlFor="email">Email</label> */}
+                            <label htmlFor="email">Email</label>
                             <Input type="email" id="email" placeholder="Email" />
                         </div>
                         <div className="w-full items-center">
-                            {/* <label htmlFor="email">Phone number</label> */}
+                            <label htmlFor="email">Phone number</label>
                             <Input type="email" id="email" placeholder="Phone number" />
                         </div>
-                        <div className="flex gap-2 flex-col">
-                            <DatePicker />
+                        <div className="w-full items-center col-span-2">
+                            <label htmlFor="select-service">Choose your service</label>
+                            <Select>
+                                <SelectTrigger id='select-service'>
+                                    <SelectValue placeholder="Select a fruit" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Fruits</SelectLabel>
+                                        <SelectItem value="apple">Apple</SelectItem>
+                                        <SelectItem value="banana">Banana</SelectItem>
+                                        <SelectItem value="blueberry">Blueberry</SelectItem>
+                                        <SelectItem value="grapes">Grapes</SelectItem>
+                                        <SelectItem value="pineapple">Pineapple</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
                         </div>
-                        <div className="flex flex-col gap-2">
-                            <h4 className='font-bold'>Choose a time slot you will arrive on {'Dec. 11, 2021:'}</h4>
+                        <div className="flex gap-2 flex-col">
+                            <DatePicker selectedDate={selectedDate} setPropSelectedDate={setSelectedDate} />
+                        </div>
+                        <div className="flex flex-col gap-2 ">
+                            <h4 className='font-bold'>Choose a time slot you will arrive on {selectedDate ? format(new Date(selectedDate * 1000), "PPP") : 'indefiend'}</h4>
                             <RadioGroup defaultValue="r1">
                                 <div className="flex items-center space-x-2">
                                     <RadioGroupItem value="r1" id="r1" />
@@ -104,6 +137,12 @@ const page = () => {
                                     <Label htmlFor="r5">2PM - 3PM</Label>
                                 </div>
                             </RadioGroup>
+                        </div>
+                        <div className="w-full flex flex-col gap-2 col-span-2">
+                            <Textarea placeholder="Any special note for your appointment..." />
+                        </div>
+                        <div className="w-full col-span-2 flex items-center justify-center">
+                            <Button className='bg-green-600 text-green-100 font-bold'>Book Appointment</Button>
                         </div>
                     </div>
                     <div className="flex flex-col gap-4 w-5/12">
