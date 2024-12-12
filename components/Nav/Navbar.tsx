@@ -83,7 +83,7 @@ const Navbar: React.FC<NavbarProps> = ({ navbarRef }) => {
             className="fixed navbar w-full p-4 bg-white shadow-sm shadow-green-800 z-20"
             ref={navbarRef} // Use the passed ref here
         >
-            <div className="mx-auto max-w-screen-md flex justify-between gap-4 items-center">
+            <div className="mx-auto max-w-screen-lg flex justify-between gap-4 items-center">
 
                 <div className="flex gap-4 items-center">
                     {RenderNavBarItem('left')}

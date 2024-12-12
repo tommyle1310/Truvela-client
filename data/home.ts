@@ -22,6 +22,13 @@ export const topServices = [
         categoryImg: 'https://github.com/shadcn.png',
         description: 'A gentle and relaxing massage that uses long strokes and kneading techniques.'
     },
+    {
+        id: 4,
+        name: 'Swedish Massage 2',
+        img: imgSwedishService,
+        categoryImg: 'https://github.com/shadcn.png',
+        description: 'A gentle and relaxing massage that uses long strokes and kneading techniques. 2'
+    },
 ];
 
 

@@ -49,10 +49,10 @@ export function MainPoster() {
 
 
 
-            <div className="absolute bottom-28 right-96 ">
+            <div className="absolute bottom-32 left-96 ">
 
-                <div className="gap-4 p-2 w-64  flex flex-col bg-gradient-to-r from-blue-700 to-purple-600 absolute text-white rounded-md shadow-lg ">
-                    <div className="p-2 rounded-lg justify-between bg-white flex items-center  text-purple-600 text-[8px] ">
+                <div className="gap-4 p-2 w-96 z-10  flex flex-col bg-gradient-to-r from-blue-700 to-purple-600 absolute text-white rounded-md shadow-lg ">
+                    <div className="p-2 rounded-lg justify-between bg-white flex items-center  text-purple-600 text-sm ">
                         <span className="font-bold">Grand Opening</span>
                         <span>All items are 25% for New Member!</span>
                     </div>

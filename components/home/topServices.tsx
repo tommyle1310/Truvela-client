@@ -27,9 +27,9 @@ const TopServices = ({ service }: { service: { name: string, img: string, catego
                 ></div>
 
                 {/* Text Content */}
-                <div className="flex flex-col text-teal-800">
-                    <h5 className="font-bold text-sm">{service.name}</h5>
-                    <p className="text-xs">{service.description}</p>
+                <div className="flex flex-col ">
+                    <h5 className="font-bold text-teal-800">{service.name}</h5>
+                    <p className="text-sm">{service.description}</p>
                 </div>
             </div>
         </div>

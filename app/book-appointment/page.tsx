@@ -56,6 +56,56 @@ const hoursOfOperation = [
         to: '10PM'
     },
 ]
+const timeSlot = [
+    {
+        value: '1',
+        label: '10AM - 11AM'
+    },
+    {
+        value: '2',
+        label: '11AM - 12PM'
+    },
+    {
+        value: '3',
+        label: '12PM - 1PM'
+    },
+    {
+        value: '4',
+        label: '1PM - 2PM'
+    },
+    {
+        value: '5',
+        label: '2PM - 3PM'
+    },
+    {
+        value: '6',
+        label: '3PM - 4PM'
+    },
+    {
+        value: '7',
+        label: '4PM - 5PM'
+    },
+    {
+        value: '8',
+        label: '5PM - 6PM'
+    },
+    {
+        value: '9',
+        label: '6PM - 7PM'
+    },
+    {
+        value: '10',
+        label: '7PM - 8PM'
+    },
+    {
+        value: '11',
+        label: '8PM - 9PM'
+    },
+    {
+        value: '12',
+        label: '9PM - 10PM'
+    }
+];
 
 
 
@@ -65,7 +115,7 @@ const page = () => {
 
 
     return (
-        <div className='flex flex-col'>
+        <div className='flex flex-col -mt-4'>
             <div className="flex w-full p-4 items-center">
                 <div className="flex items-center justify-center w-2/5 text-lg font-semibold">Select a date and time that works for you, and we’ll take care of the rest</div>
                 <div className="w-3/5 aspect-video bg-center relative bg-contain bg-no-repeat" style={{ background: `url(${imgBooking})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
@@ -74,26 +124,41 @@ const page = () => {
             </div>
             <div className="flex flex-col gap-4">
                 <h4 className='text-lg font-bold'>Enter your information here</h4>
-                <div className="flex gap-4">
-                    <div className="w-7/12 grid grid-cols-2 gap-4">
+                <div className="flex gap-16">
+                    <div className="w-8/12 grid grid-cols-2 gap-4">
                         <div className="w-full items-center">
                             <label htmlFor="first-name">First name</label>
                             <Input type="first-name" id="first-name" placeholder="First name" />
                         </div>
                         <div className="w-full items-center">
-                            <label htmlFor="email">Last name</label>
-                            <Input type="email" id="email" placeholder="Last name" />
+                            <label htmlFor="last-name">Last name</label>
+                            <Input type="email" id="last-name" placeholder="Last name" />
                         </div>
                         <div className="w-full items-center">
                             <label htmlFor="email">Email</label>
                             <Input type="email" id="email" placeholder="Email" />
                         </div>
                         <div className="w-full items-center">
-                            <label htmlFor="email">Phone number</label>
-                            <Input type="email" id="email" placeholder="Phone number" />
+                            <label htmlFor="phone">Phone number</label>
+                            <Input type="email" id="phone" placeholder="Phone number" />
                         </div>
-                        <div className="w-full items-center col-span-2">
-                            <label htmlFor="select-service">Choose your service</label>
+                        <div className="w-full items-center">
+                            <label htmlFor="guest-quantity">How many guests are you booking for?</label>
+                            <Select>
+                                <SelectTrigger id='guest-quantity'>
+                                    <SelectValue placeholder="2" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => (
+                                            <SelectItem key={item} value={item.toString()}>{item}</SelectItem>
+                                        ))}
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                        <div className="w-full flex flex-col">
+                            <label className='flex-grow' htmlFor="select-service">Choose your service</label>
                             <Select>
                                 <SelectTrigger id='select-service'>
                                     <SelectValue placeholder="Select a fruit" />
@@ -111,41 +176,33 @@ const page = () => {
                             </Select>
                         </div>
                         <div className="flex gap-2 flex-col">
+                            <h4 className='flex-grow '>Select Date of arrival</h4>
                             <DatePicker selectedDate={selectedDate} setPropSelectedDate={setSelectedDate} />
                         </div>
                         <div className="flex flex-col gap-2 ">
-                            <h4 className='font-bold'>Choose a time slot you will arrive on {selectedDate ? format(new Date(selectedDate * 1000), "PPP") : 'indefiend'}</h4>
-                            <RadioGroup defaultValue="r1">
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="r1" id="r1" />
-                                    <Label htmlFor="r1">10AM - 11AM</Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="r2" id="r2" />
-                                    <Label htmlFor="r2">11AM - 12PM</Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="r3" id="r3" />
-                                    <Label htmlFor="r3">12PM - 1PM</Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="r4" id="r4" />
-                                    <Label htmlFor="r4">1PM - 2PM</Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="r5" id="r5" />
-                                    <Label htmlFor="r5">2PM - 3PM</Label>
-                                </div>
-                            </RadioGroup>
+                            <h4 className=''>Choose a time slot you will arrive on {selectedDate ? format(new Date(selectedDate * 1000), "PPP") : 'indefiend'}</h4>
+                            <Select>
+                                <SelectTrigger id='select-service'>
+                                    <SelectValue placeholder="Pick your timeslot" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        {timeSlot.map(item => (
+                                            <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
+                                        ))}
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
                         </div>
                         <div className="w-full flex flex-col gap-2 col-span-2">
-                            <Textarea placeholder="Any special note for your appointment..." />
+                            <label htmlFor="note">Note</label>
+                            <Textarea id='note' placeholder="Any special note for your appointment..." />
                         </div>
                         <div className="w-full col-span-2 flex items-center justify-center">
                             <Button className='bg-green-600 text-green-100 font-bold'>Book Appointment</Button>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-4 w-5/12">
+                    <div className="flex flex-col gap-4 w-4/12">
                         <div className="w-full aspect-square bg-violet-100"></div>
                         <div className="flex justify-between gap-4">
                             <div className="flex w-5/12 flex-col">
