@@ -54,7 +54,7 @@ const Home = () => {
         </div>
       </div>
       {/* membership */}
-      <div style={{ marginLeft: 'calc(50% - 50vw)', marginRight: 'calc(50% - 50vw)', background: `url(${imgMembershipBg})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} className="w-screen  aspect-[10/4] flex relative ">
+      <div style={{ marginLeft: 'calc(50% - 50vw)', marginRight: 'calc(50% - 49vw  - 0.3rem)', background: `url(${imgMembershipBg})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} className="  aspect-[10/4] flex relative ">
         <div className="w-full h-full mx-auto max-w-screen-md bg-center relative bg-contain bg-no-repeat flex flex-col gap-3" >
           <div className="absolute bg-white bg-opacity-0 w-full h-full"></div>
           <div className="text-violet-400 p-4 bg-black bg-opacity-80 font-bold text-center">

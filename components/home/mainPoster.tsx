@@ -1,3 +1,4 @@
+'use client'
 import {
     ResizableHandle,
     ResizablePanel,
@@ -9,8 +10,10 @@ import { Button } from "../ui/button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { imgMainPoster } from "@/data/imgLinks"
+import { useRouter } from "next/navigation"
 
 export function MainPoster() {
+    const router = useRouter()
     return (
         <ResizablePanelGroup
             direction="horizontal"
@@ -31,7 +34,7 @@ export function MainPoster() {
                                 <FontAwesomeIcon icon={faArrowRight} />
 
                             </Button>
-                            <Button variant={'ghost'} className="font-bold">
+                            <Button variant={'ghost'} onClick={() => { router.push('/spa-services') }} className="font-bold">
                                 PRICING
                                 <FontAwesomeIcon icon={faArrowRight} />
 
