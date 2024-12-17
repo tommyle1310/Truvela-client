@@ -6,7 +6,7 @@ import React from 'react'
 const Footer = () => {
     return (
         <div className="bg-violet-100 p-4 w-full ">
-            <div className="mx-auto max-w-screen-md grid grid-cols-12 gap-4">
+            <div className="mx-auto max-w-screen-lg grid grid-cols-12 gap-4">
                 <div className="flex flex-col col-span-4 gap-4">
                     <div className="w-32 h-20 bg-violet-500"></div>
                     <p className="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. culpa nostrum id blanditiis maiores, eos animi facilis deserunt nobis architecto asperiores natus!</p>
@@ -22,8 +22,8 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="flex gap-4 col-span-5">
-                    <div className="flex flex-col gap-4">
-                        <h5 className="text-lg font-bold">Our Services</h5>
+                    <div className="flex flex-col gap-4 basis-4/12">
+                        <h5 className=" font-bold">Our Services</h5>
                         <div className="flex flex-col gap-2 text-xs">
                             <Link className="w-full py-0" href='/'>Nail Styling</Link>
                             <Link className="w-full py-0" href='/'>Health Shower</Link>
@@ -32,8 +32,8 @@ const Footer = () => {
                             <Link className="w-full py-0" href='/'>Mind Relax</Link>
                         </div>
                     </div>
-                    <div className="flex flex-col flex-grow gap-4">
-                        <h5 className="text-lg font-bold">Image Gallery</h5>
+                    <div className="flex flex-col gap-4 basis-4/12">
+                        <h5 className=" font-bold">Image Gallery</h5>
                         <div className="grid grid-cols-3 gap-2">
                             {[1, 2, 3, 4, 5, 6].map(item => (
                                 <div
@@ -51,9 +51,9 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex gap-4 col-span-3">
+                <div className="flex gap-4 col-span-3 basis-4/12">
                     <div className="flex flex-col gap-4">
-                        <h5 className="text-lg font-bold">Contact Us</h5>
+                        <h5 className=" font-bold">Contact Us</h5>
                         <div className="flex flex-col gap-2 text-xs">
                             <div className="w-full py-0" >Call now: <span>{'+84 707171164'}</span></div>
                             <div className="w-full py-0" >Email: {'tommyle1310@gmail.com'}</div>

@@ -295,7 +295,6 @@ const page = () => {
                             <DatePicker selectedDate={selectedDate} setPropSelectedDate={setSelectedDate} />
                         </div>
                         {/* time range */}
-
                         <div className="flex max-h-24 flex-col gap-2 ">
                             <h4 className='text-sm flex-grow'>Choose a time slot you will arrive on {selectedDate ? format(new Date(selectedDate * 1000), "PPP") : 'undefined'}</h4>
                             <Select value={generalData.timeRange} onValueChange={handleGeneralDataChange}>
@@ -311,22 +310,6 @@ const page = () => {
                                 </SelectContent>
                             </Select>
                         </div>
-
-                        {/* <div className="w-full max-h-24 items-end flex flex-col">
-                            <label className='flex-grow' htmlFor="guest-quantity">How many guests are you booking for?</label>
-                            <Select>
-                                <SelectTrigger id='guest-quantity'>
-                                    <SelectValue placeholder="2" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => (
-                                            <SelectItem key={item} value={item.toString()}>{item}</SelectItem>
-                                        ))}
-                                    </SelectGroup>
-                                </SelectContent>
-                            </Select>
-                        </div> */}
                         {/* booking note */}
                         <div className="w-full  max-h-24 flex flex-col gap-2">
                             <label htmlFor="note">Note</label>
